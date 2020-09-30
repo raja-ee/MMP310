@@ -6,11 +6,12 @@ var bobRunR, bobRunL;
 var bobX, bobY;
 var bobSpeed = 4;
 var mounthills;
-var pinetree;
-var pinetreedark;
-var pinetreeblack;
+var pinetree, pinetreedark, pinetreeblack;
 var moon;
 var grass;
+var signImage, objBubble;
+
+
 
 function preload() {
     bobIdle = loadImage('assets/positive_idle.gif');
@@ -22,6 +23,9 @@ function preload() {
     pinetreeblack = loadImage('assets/blackpine_tree.gif');
     moon = loadImage('assets/the_moon.gif');
     grass = loadImage('assets/grass.gif');
+    signImage = loadImage('assets/brownsign.png');
+    objBubble = loadImage('assets/objbubble.png');
+    
 }
 
 function setup() {
@@ -29,6 +33,25 @@ function setup() {
     bobX = width/2;
     bobY = 500;
     imageMode(CENTER);
+}
+
+function sign(msg, x, y) {
+	image(signImage, x, y, 85, 85);
+
+	// 2d collision between player (jerry) and sign 
+
+	if (bobX - bobIdle.width / 2 < x + signImage.width / 2 &&
+		bobX + bobIdle.width / 2 > x - signImage.width / 2 &&
+		bobY - bobIdle.height / 2 < y + signImage.height / 2 &&
+		bobY + bobIdle.height / 2 > y - signImage.height / 2) {
+
+		image(objBubble, sign.x, sign.y - 100, 150, 150)
+		fill(255);
+		textFont("Comic Sans MS");
+		textSize(18);
+		textAlign(CENTER, CENTER);
+		text(msg, x - objBubble.width/2 + 20, y - objBubble.height/2, objBubble.width - 40, objBubble.height - 60);
+	}
 }
 
 function draw() {
@@ -73,6 +96,10 @@ function draw() {
 		bobY += bobSpeed;
 		bobIsRunningLeft = true;
 	}
+
+	// signs
+	sign("Stretch high and\nreach for the stars.", 100, 530);
+	sign("Teleport to the Moon\n[Press Spacebar]", 1100, 530);
 
 	// character image
     
