@@ -6,10 +6,13 @@ var bobRunR, bobRunL;
 var bobX, bobY;
 var bobSpeed = 4;
 var mounthills;
-var pinetree, pinetreedark, pinetreeblack;
+var pinetree;
+var pinetreedark;
+var pinetreeblack;
 var moon;
 var grass;
-var signImage, objBubble;
+var signImage;
+var objBubble;
 
 
 
@@ -21,7 +24,7 @@ function preload() {
     pinetree = loadImage('assets/pine_tree.gif');
     pinetreedark = loadImage('assets/darkpine_tree.gif');
     pinetreeblack = loadImage('assets/blackpine_tree.gif');
-    moon = loadImage('assets/the_moon.gif');
+    moon = loadImage('assets/the-moon.gif');
     grass = loadImage('assets/grass.gif');
     signImage = loadImage('assets/brownsign.png');
     objBubble = loadImage('assets/objbubble.png');
@@ -45,7 +48,7 @@ function sign(msg, x, y) {
 		bobY - bobIdle.height / 2 < y + signImage.height / 2 &&
 		bobY + bobIdle.height / 2 > y - signImage.height / 2) {
 
-		image(objBubble, sign.x, sign.y - 100, 150, 150)
+		image(objBubble, sign.x, sign.y - 200, 100, 100)
 		fill(255);
 		textFont("Comic Sans MS");
 		textSize(18);
