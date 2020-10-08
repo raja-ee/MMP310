@@ -3,7 +3,9 @@
 // global variables
 var bobIdle;
 var bobRunR, bobRunL;
+var bobJump;
 var bobX, bobY;
+var bobMainX, bobMainY;
 var bobSpeed = 4;
 var mounthills;
 var pinetree;
@@ -13,8 +15,16 @@ var moon;
 var grass;
 var signImage;
 var objBubble;
+var earth, moonsurface;
 
+// game physics
+var groundY = 500;
+var GRAVITY = 2; // acceleration 2 pix per frame
+var bobYSpeed = 2;
+var bobIsJumping = false;
 
+var scene = "main";
+var bgColor = "black";
 
 function preload() {
     bobIdle = loadImage('assets/positive_idle.gif');
@@ -28,6 +38,9 @@ function preload() {
     grass = loadImage('assets/grass.gif');
     signImage = loadImage('assets/brownsign.png');
     objBubble = loadImage('assets/objbubble.png');
+    bobJump = loadImage('assets/positive_jump.gif');
+    earth = loadImage('assets/earth.png');
+    moonsurface = loadImage('assets/moonland.png');
     
 }
 
@@ -58,6 +71,47 @@ function sign(msg, x, y) {
 }
 
 function draw() {
+
+	// scene manager
+	if (scene == 'main') {
+		main();
+	}
+	else if (scene == 'moonland') {
+		moonland();
+	}
+
+	// apply gravity
+	if (bobY < height - groundY) {
+		bobYSpeed += GRAVITY;
+	} else {
+		// jerry on the ground
+		bobYSpeed = 0;
+		bobIsJumping = false;
+	}
+
+	// 32 is space
+	if (!bobIsJumping && keyIsDown(32)) {
+		bobYSpeed = -30;
+		bobIsJumping = true;
+	}
+
+	bobY += bobYSpeed;
+
+	if (bobIsJumping) {
+		image(bobJump, bobX, bobY);
+	} else {
+		image(bobIdle, bobX, bobY);
+	}
+
+}
+
+function setupMain() {
+	bobX = bobMainX;
+	bobY = bobMainY;
+	scene = "main";
+}
+
+function main() {
 	background(0, 5, 46);
 	noCursor();
 
@@ -90,16 +144,6 @@ function draw() {
 		bobIsRunningLeft = true;
 	}
 
-	if (keyIsDown(UP_ARROW)) {
-		bobY -= bobSpeed;
-		bobIsRunningRight = true;
-	}
-
-	if (keyIsDown(DOWN_ARROW)) {
-		bobY += bobSpeed;
-		bobIsRunningLeft = true;
-	}
-
 	// signs
 	sign("Stretch high and\nreach for the stars.", 100, 530);
 	sign("Teleport to the Moon\n[Press Spacebar]", 1100, 530);
@@ -117,5 +161,48 @@ function draw() {
 	// more still images (foreground)
 
 	image(grass, width/2, height/2, 1200, 600);
+
+}
+
+function moonland() {
+	background(0, 5, 46);
+	noCursor();
+
+	// still images (background)
+
+	image(earth, 1000, 100, 100, 100);
+    
+    // character movement
+
+    var bobIsRunningRight = false;
+    var bobIsRunningLeft= false;
+
+	if (keyIsDown(RIGHT_ARROW)) {
+		bobX += bobSpeed;
+		bobIsRunningRight = true;
+	}
+
+	if (keyIsDown(LEFT_ARROW)) {
+		bobX -= bobSpeed;
+		bobIsRunningLeft = true;
+	}
+	
+	// signs
+	sign("Stretch high and\nreach for the stars.", 100, 530);
+	sign("Teleport to the Moon\n[Press Spacebar]", 1100, 530);
+
+	// character image
+    
+	if (bobIsRunningRight) {
+		image(bobRunR, bobX, bobY);
+	} else if (bobIsRunningLeft) {
+		image(bobRunL, bobX, bobY);
+	} else {
+		image(bobIdle, bobX, bobY);
+	}
+
+	// more still images (foreground)
+
+	image(moonsurface, width/2, height/2, 1200, 600);
 
 }
