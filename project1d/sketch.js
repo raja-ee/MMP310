@@ -18,7 +18,7 @@ var objBubble;
 var earth, moonsurface;
 
 // game physics
-var groundY = 500;
+var groundY = 99;
 var GRAVITY = 2; // acceleration 2 pix per frame
 var bobYSpeed = 2;
 var bobIsJumping = false;
@@ -51,22 +51,31 @@ function setup() {
     imageMode(CENTER);
 }
 
-function sign(msg, x, y) {
-	image(signImage, x, y, 85, 85);
+// game object functions 
+
+function sign(msg, x, y, bg, min, max) {
+	image(signImage, x, y);
 
 	// 2d collision between player (jerry) and sign 
-
+	
 	if (bobX - bobIdle.width / 2 < x + signImage.width / 2 &&
 		bobX + bobIdle.width / 2 > x - signImage.width / 2 &&
 		bobY - bobIdle.height / 2 < y + signImage.height / 2 &&
 		bobY + bobIdle.height / 2 > y - signImage.height / 2) {
 
-		image(objBubble, sign.x, sign.y - 200, 150, 150)
 		fill(255);
 		textFont("Comic Sans MS");
-		textSize(18);
+		textSize(20);
 		textAlign(CENTER, CENTER);
-		text(msg, x - objBubble.width/2 + 20, y - objBubble.height/2, objBubble.width - 40, objBubble.height - 60);
+		text(msg, x - signImage.width/2 + 20, y - signImage.height/2, signImage.width - 40, signImage.height - 60);
+
+		textSize(16);
+		text("Hit Enter to Play", x, y + 20);
+
+		// enter event
+		if (keyIsDown(ENTER)) {
+			setupmoonland(true, bg, min, max);
+		}
 	}
 }
 
@@ -78,29 +87,6 @@ function draw() {
 	}
 	else if (scene == 'moonland') {
 		moonland();
-	}
-
-	// apply gravity
-	if (bobY < height - groundY) {
-		bobYSpeed += GRAVITY;
-	} else {
-		// jerry on the ground
-		bobYSpeed = 0;
-		bobIsJumping = false;
-	}
-
-	// 32 is space
-	if (!bobIsJumping && keyIsDown(32)) {
-		bobYSpeed = -30;
-		bobIsJumping = true;
-	}
-
-	bobY += bobYSpeed;
-
-	if (bobIsJumping) {
-		image(bobJump, bobX, bobY);
-	} else {
-		image(bobIdle, bobX, bobY);
 	}
 
 }
@@ -137,16 +123,36 @@ function main() {
 	if (keyIsDown(RIGHT_ARROW)) {
 		bobX += bobSpeed;
 		bobIsRunningRight = true;
-	}
-
-	if (keyIsDown(LEFT_ARROW)) {
+	} else if (keyIsDown(LEFT_ARROW)) {
 		bobX -= bobSpeed;
 		bobIsRunningLeft = true;
+	} else if (bobIsJumping) {
+		image(bobJump, bobX, bobY);
+	} else {
+		image(bobIdle, bobX, bobY);
 	}
+
+	// apply gravity
+	if (bobY < height - groundY) {
+		bobYSpeed += GRAVITY;
+	} else {
+		// jerry on the ground
+		bobYSpeed = 0;
+		bobIsJumping = false;
+	}
+
+	// 32 is space
+	if (!bobIsJumping && keyIsDown(32)) {
+		bobYSpeed = -30;
+		bobIsJumping = true;
+		image(bobJump, bobX, bobY)
+	}
+
+	bobY += bobYSpeed;
 
 	// signs
 	sign("Stretch high and\nreach for the stars.", 100, 530);
-	sign("Teleport to the Moon\n[Press Spacebar]", 1100, 530);
+	sign("Teleport to the Moon", 1100, 530);
 
 	// character image
     
@@ -164,8 +170,21 @@ function main() {
 
 }
 
+function setupmoonland(fromMain, bg, min, max) {
+
+	bgColor = 0, 5, 46;
+
+	// save jerry's map position
+	if (fromMain) {
+		bobMainX = bobX;
+		bobMainY = bobY;
+	}
+
+	scene = 'moonland';
+}
+
 function moonland() {
-	background(0, 5, 46);
+	background(bgColor);
 	noCursor();
 
 	// still images (background)
@@ -180,16 +199,35 @@ function moonland() {
 	if (keyIsDown(RIGHT_ARROW)) {
 		bobX += bobSpeed;
 		bobIsRunningRight = true;
-	}
-
-	if (keyIsDown(LEFT_ARROW)) {
+	} else if (keyIsDown(LEFT_ARROW)) {
 		bobX -= bobSpeed;
 		bobIsRunningLeft = true;
+	} else if (bobIsJumping) {
+		image(bobJump, bobX, bobY);
+	} else {
+		image(bobIdle, bobX, bobY);
 	}
+
+	// apply gravity
+	if (bobY < height - groundY) {
+		bobYSpeed += GRAVITY;
+	} else {
+		// jerry on the ground
+		bobYSpeed = 0;
+		bobIsJumping = false;
+	}
+
+	// 32 is space
+	if (!bobIsJumping && keyIsDown(32)) {
+		bobYSpeed = -30;
+		bobIsJumping = true;
+	}
+
+	bobY += bobYSpeed;
 	
 	// signs
 	sign("Stretch high and\nreach for the stars.", 100, 530);
-	sign("Teleport to the Moon\n[Press Spacebar]", 1100, 530);
+	sign("Teleport to the Moon", 1100, 530);
 
 	// character image
     
