@@ -1,0 +1,74 @@
+/* Resource(s): w3schools.com */
+
+body {
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,91,255,1) 10%, rgba(0,91,255,1) 90%, rgba(0,0,0,1) 100%);
+    margin: 0;
+    overflow: hidden;
+}
+
+h1 {
+    font-family: Bahnschrift;
+    color: white;
+    text-align: center;
+}
+
+p {
+    color: white;
+    text-align: center;
+}
+
+ul {
+    margin: 0;
+    padding: 0 0 2em 0;
+    text-align: center
+}
+
+li {
+    display: inline;
+    
+}
+
+a:link {
+    font-family: Bahnschrift SemiBold;
+    color: white;
+    text-align: center;
+}
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: yellowgreen;
+}
+
+a:active {
+    color: rgb(0,91,255);
+}
+
+img {
+  border: 10px solid #000;
+}
+
+#portfolio {
+    text-align: center;
+    margin: 0;
+    padding: 0 0 2em 0;
+}
+
+.project {
+    text-align: center;
+}
+
+canvas {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+  padding: 20px;
+  text-align: center;
+}
+
