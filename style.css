@@ -1,14 +1,12 @@
 /* Resource(s): w3schools.com */
 
 body {
-    background: rgb(0,0,0);
-    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,91,255,1) 10%, rgba(0,91,255,1) 90%, rgba(0,0,0,1) 100%);
+    background: rgb(0,91,255);
 }
 
 h1 {
     font-family: Bahnschrift;
     color: white;
-    text-align: center;
 }
 
 p {
@@ -31,6 +29,7 @@ a:link {
     font-family: Bahnschrift SemiBold;
     color: white;
     text-align: center;
+    text-decoration: none;
 }
 
 a:visited {
@@ -46,16 +45,61 @@ a:active {
 }
 
 img {
-  border: 10px solid #000;
+    border: 10px solid #000;
+    display: block;
+    position: relative;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+#header {
+    background-color: black;
+    width: 100%;
+    height: 84px;
+    position: relative;
+    vertical-align: middle;
+    justify-content: center;
+    top: 0;
+    left: 0;
+}
+
+#headertitle {
+    margin: 1px;
+    padding-left: 20px;
+    float: left;
+}
+
+#headerlinks {
+    font-size: 22px;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    padding-right: 18px;
+    float: right;
 }
 
 #portfolio {
-    text-align: center;
     margin: 0;
     padding: 0 0 2em 0;
 }
 
-.project {
+#portlinks {
+    background-color: rgb(36,95,112);
+    width: 20%;
+    height: 64px;
+    line-height: 280%;
+    position: relative;
+    overflow: hidden;
+    font-size: 22px;
+    vertical-align: middle;
     text-align: center;
+    float: left;
+}
+
+#about {
+    font-family: Bahnschrift;
+    font-size: 22px;
 }
 
