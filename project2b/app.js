@@ -58,11 +58,11 @@ endButton.addEventListener('click', function() {
 	message.textContent = `You got ${score} out of ${questions.length}.`
 	if (score == 0) {
 		message.textContent += " Tough luck!"
-	} else if (score == 1, 2, 3) {
+	} else if (score == 1 || score == 2 || score == 3) {
 		message.textContent += " Well at least you tried."
-	} else if (score == 4, 5, 6) {
+	} else if (score == 4 || score == 5 || score == 6) {
 		message.textContent += " That's great!"
-	} else if (score == 7, 8, 9) {
+	} else if (score == 7 || score == 8 || score == 9) {
 		message.textContent += " So close! You did Amazing."
 	} else if (score == 10) {
 		message.textContent += " You weren't suppose to get it all right but congrats!"
