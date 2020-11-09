@@ -20,7 +20,7 @@ questions.push(new Question("What country has a bigger population than the UK? (
 questions.push(new Question("When was Facebook officially founded?", "Feburary 2004", ["March 2006", "August 2003"]));
 questions.push(new Question("What word has the definition of 'bold or arrogant disregard of normal restraints'?", "Audacity", ["Attitude", "Arrogance"]));
 questions.push(new Question("What is the distance from the Earth to the Sun?", "92.056 million miles", ["135.04 million miles", "67.24 million miles"]));
-questions.push(new Question("What year did Tim Berners-Lee invent HTML", "1989", ["1984", "1993"]));
+questions.push(new Question("What year did Tim Berners-Lee invent HTML?", "1989", ["1984", "1993"]));
 questions.push(new Question("[Finish The Lyrics] 'Cause baby, you're a ________", "Firework", ["Grenade", "Rocket Launcher"]));
 questions.push(new Question("What is the most viewed YouTube video of all time? (As of 2020)", "Baby Shark - Pinkfong", ["Despacito - Luis Fonsi", "Shape of You - Ed Sheeran"]));
 questions.push(new Question("How many times is the word 'Bee' said in DreamWorks Bee Movie?", "172", ["243", "97"]));
