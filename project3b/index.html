@@ -4,15 +4,21 @@
 		<meta charset="utf-8">
 		<title>My first three.js sculpture</title>
 		<style>
-			body { margin: 0; }
+			body { 
+                margin: 0;
+                background-image: url('resources/2k_stars.jpg');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+            }
 			canvas {
 				display: block;
-				background: linear-gradient(blue, black, red);
+				/*background: linear-gradient(blue, black, red);*/
 			}
 		</style>
 	</head>
 	<body>
-		<script src="js/three.min.js"></script>
+        <script src="js/three.min.js"></script>
         <script src="js/OrbitControls.js"></script>
 		<script src="scene.js"></script>
 	</body>
