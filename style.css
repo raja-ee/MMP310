@@ -17,7 +17,7 @@ p {
 ul {
     margin: 0;
     padding: 0 0 2em 0;
-    text-align: center;
+    text-align: center
 }
 
 li {
@@ -45,12 +45,13 @@ a:active {
 }
 
 img {
-    border: 20px solid black;
+    border: 10px solid #000;
     display: block;
     position: relative;
-    width: 40%;
-    height: 360px;
-    float: right;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
 #header {
@@ -62,11 +63,10 @@ img {
     justify-content: center;
     top: 0;
     left: 0;
-    margin-bottom: 10px;
 }
 
 #headertitle {
-    margin-top: 3px;
+    margin: 1px;
     padding-left: 20px;
     float: left;
 }
@@ -75,24 +75,24 @@ img {
     font-size: 22px;
     top: 0;
     right: 0;
-    margin-top: 10px;
+    margin: 10px;
     padding-right: 18px;
     float: right;
 }
 
 #portfolio {
-    background-color: rgb(36,95,112);
-    width: 60%;
-    height: 400px;
+    margin: 0;
+    padding: 0 0 2em 0;
 }
 
 #portlinks {
-    width: 30%;
+    background-color: rgb(36,95,112);
+    width: 20%;
     height: 64px;
-    padding-top: 12px;
+    line-height: 280%;
     position: relative;
     overflow: hidden;
-    font-size: 120%;
+    font-size: 22px;
     vertical-align: middle;
     text-align: center;
     float: left;
